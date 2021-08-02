@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: {{ .Values.nfs.volume.pvc.kind }}
+metadata:
+  name: {{ .Values.nfs.volume.pvc.name }}
+spec:
+  storageClassName: standard
+  accessModes:
+    - {{ .Values.nfs.volume.pvc.accessmode }}
+  resources:
+    requests:
+      storage: {{ .Values.nfs.volume.pvc.storage }}
