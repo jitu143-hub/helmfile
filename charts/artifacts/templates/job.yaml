@@ -10,7 +10,7 @@ spec:
           image: {{ .Values.artifacts.container.image }}
           workingDir: {{ .Values.artifacts.container.workingDir }}
           volumeMounts:
-             {{- range $k, $v := .Values.artifacts.volume.volumemounts }} 
+             {{- range $k, $v := .Values.artifacts.container.volumeMounts }} 
              - {{ . | toYaml | indent 15 | trim }}
              {{- end }}              
           command:

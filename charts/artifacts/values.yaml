@@ -6,12 +6,8 @@ artifacts:
   container:
       name: artifacts
       image: hyperledger/fabric-tools:2.3
-      workingDir: /       
-  restartpolicy: Never     
-  volume:
-    name: fabricfiles
-    claimname: mypvc
-    volumemounts:
+      workingDir: /
+      volumemounts:
             - mountpath: /organizations
               name: fabricfiles
               subpath: organizations
@@ -26,4 +22,8 @@ artifacts:
               subpath: channel-artifacts
             - mountpath: /scripts
               name: fabricfiles
-              subpath: scripts
+              subpath: scripts      
+  restartpolicy: Never     
+  volume:
+    name: fabricfiles
+    claimname: mypvc
