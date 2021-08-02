@@ -33,10 +33,9 @@ spec:
               memory: "{{ .Values.org1.container.limits.memory }}"
               cpu: "{{ .Values.org1.container.limits.cpu }}"
           env:
-           {{- range .Values.org1.container.env }}
-           - name: {{ .name }}
-             value: {{ .value }}
-           {{- end }}
+            {{- range $k, $v := .Values.org1.container.env }}
+             - {{ . | toYaml | indent 15 | trim }}
+            {{- end }} 
           volumeMounts:
             - name: {{ .Values.org1.volume.name }}
               mountPath: {{ .Values.org1.volume.mountpath }}

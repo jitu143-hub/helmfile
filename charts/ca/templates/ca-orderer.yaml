@@ -34,10 +34,9 @@ spec:
               memory: "{{ .Values.orderer.container.limits.memory }}"
               cpu: "{{ .Values.orderer.container.limits.cpu }}"
           env:
-            {{- range .Values.orderer.container.env }}
-            - name: {{ .name }}
-              value: {{ .value }}
-            {{- end }}                      
+            {{- range $k, $v := .Values.orderer.container.env }}
+             - {{ . | toYaml | indent 15 | trim }}
+            {{- end }}                       
           volumeMounts:
             - name: {{ .Values.orderer.volume.name }}
               mountPath: {{ .Values.orderer.volume.mountpath }}
